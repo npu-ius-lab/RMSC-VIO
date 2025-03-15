@@ -2,7 +2,17 @@
 
 ### RMSC-VIO: Robust Multi-Stereoscopic Visual-Inertial Odometry for Local Visually Challenging Scenarios
 
-We present a Multi-Stereoscopic Visual-Inertial Odometry (VIO) system capable of integrating an arbitrary number of stereo cameras, exhibiting excellent robustness in the face of visually challenging scenarios. During system initialization, we introduce multi-view keyframes for simultaneous processing of multiple image inputs and propose an adaptive feature selection method to alleviate the computational burden of multi-camera systems This method iteratively updates the state information of visual features, filtering out high-quality image feature points and effectively reducing unnecessary redundancy consumption. In the backend phase, we propose an adaptive tightly coupled optimization method, assigning corresponding optimization weights based on the quality of different image feature points, effectively enhancing localization precision. We validate the effectiveness and robustness of our system through a series of datasets, encompassing various visually challenging scenarios and practical flight experiments. Our approach achieves up to a 90\% reduction in Absolute Trajectory Error (ATE) compared to state-of-the-art multi-camera VIO methods.
+* **T. Zhang, J. Xu, H. Shen, R. Yang and T. Yang, "RMSC-VIO: Robust Multi-Stereoscopic Visual-Inertial Odometry for Local Visually Challenging Scenarios," in IEEE Robotics and Automation Letters, doi: 10.1109/LRA.2024.3377008.**[pdf](https://ieeexplore.ieee.org/document/10472018)
+
+      @ARTICLE{10472018,
+        author={Zhang, Tong and Xu, Jianyu and Shen, Hao and Yang, Rui and Yang, Tao},
+        journal={IEEE Robotics and Automation Letters}, 
+        title={RMSC-VIO: Robust Multi-Stereoscopic Visual-Inertial Odometry for Local Visually Challenging Scenarios}, 
+        year={2024},
+        volume={9},
+        number={5},
+        pages={4130-4137},
+        doi={10.1109/LRA.2024.3377008}}
 
 Click for the video demo.
 [![Video Demo](./img/封面.png)](https://youtu.be/_CWLo0V31og)
@@ -36,4 +46,29 @@ For indoor sequences, we utilized a motion capture system to acquire ground trut
 
 [RMSC-VIO Datasets](https://pan.baidu.com/s/1vOmaT4yJX6tf_EHAj20-Dw?pwd=RMSC).
 
+## 2. Prerequisites
+### 2.1 **Ubuntu** and **ROS**
+Ubuntu 64-bit 18.04 or 20.04.
+ROS  Melodic or noetic. [ROS Installation](http://wiki.ros.org/ROS/Installation)
 
+### 2.2. **Ceres Solver**
+Follow [Ceres Installation](http://ceres-solver.org/installation.html).
+
+### 2.3 ##Realsense##
+Follow ##Double_Camera##
+
+## 3. Build RMSC-VIO
+Clone the repository and catkin_make:
+```
+    cd ~/catkin_ws/src
+    git clone https://github.com/npu-ius-lab/RMSC-VIO.git
+    cd ../
+    catkin_make
+    source ~/catkin_ws/devel/setup.bash
+```
+
+## 4. Run Example
+```
+    roslaunch vins vins_rviz.launch
+    rosrun vins vins_node src/RMSC-VIO/config/realsense_d435i/realsense_stereo_imu_config.yaml
+```
